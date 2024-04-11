@@ -1,0 +1,71 @@
+# Joseph Hawkins
+# 10/27/2023
+# Issues:
+# Executable:
+
+
+import csv
+
+
+# Requirement step 1 - access the data in this file and print out only the headers
+# Open spotify-2023 as csv_file
+with open('spotify-2023.csv', 'r') as csv_file:
+    # Use readline() Method to read first line as defined in text example
+    line1 = csv_file.readline()
+    # print headers from line1
+    print("Headers:", line1)
+# End Requirement step 1
+
+
+# Requirement step 2 - parse the first 5 rows of data - output only the data no headers
+# Read first 5 rows using readline() method
+    line2 = csv_file.readline()
+    line3 = csv_file.readline()
+    line4 = csv_file.readline()
+    line5 = csv_file.readline()
+    line6 = csv_file.readline()
+# print lines created from readline() method
+    print(f"First 5 rows of data:")
+    print(line2)
+    print(line3)
+    print(line4)
+    print(line5)
+    print(line6)
+# End Requirement step 2
+
+
+# Requirement step 3 - grab the column artist(s)_name and output the frequency of Taylor Swift occurrences
+with open('spotify-2023.csv', 'r') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    count = 0
+    for row in csv_reader:
+        if "Taylor Swift" in row['artist(s)_name']:
+            count += 1
+    print(f"Taylor Swift occurrences:",count)
+# End Requirement step 3
+
+
+# Requirement step 4 - looking at the track_name, and artist(s)_name columns, print out the most danceable
+# track name and artist - there is only one.
+with open('spotify-2023.csv', 'r') as csv_file:
+    csv_reader = list(csv.DictReader(csv_file))
+
+    most_danceable = max(int(row['danceability_%']) for row in csv_reader)
+
+    for row in csv_reader:
+        if int(row['danceability_%']) == most_danceable:
+            print(f"Most danceable track name and artist:", row['track_name'],",",row['artist(s)_name'])
+# End Requirement step 4
+
+
+# Requirement step 5 - use the columns in_spotify_charts, in_apple_charts, in_deezer_charts, in_shazam_charts,
+# output the chart leaders in a nice tabulated table (pretty table) with the headings {Track / Artist /
+# Spotify Favorite / Apple Favorite / Deezer Favorite / Shazam Favorite }.  Put the value found from the charts
+# column for each artist/track in the column that they are the leader. So, you will have only one (unless it's
+# the same artist / track filled in for each chart.)
+
+
+
+
+# End Requirement step 5
+csv_file.close()
